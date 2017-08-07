@@ -1,6 +1,12 @@
 import Gitter from 'gitter';
 
-const gitter = window.gitter = new Gitter({ container: '#container' });
+const container = document.getElementById('container');
+
+const gitter = window.gitter = new Gitter({ 
+  canvas: {
+    container
+  } 
+});
 
 const modeling = gitter.get('modeling');
 const gitterElementFactory = gitter.get('gitterElementFactory');
