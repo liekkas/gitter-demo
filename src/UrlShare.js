@@ -25,7 +25,7 @@ export default class UrlShare {
     const $el = domify(
       `<div id="share">
         <i class="fa fa-share" aria-hidden="true"></i>
-        Share
+        Share Your Composition
         <span class="url hidden"></span>
       </div>`);
 
@@ -42,7 +42,7 @@ export default class UrlShare {
     const $shareDialog = this.$shareDialog = domify(`
       <div id="share-dialog" class="hidden">
         <div id="close-share-dialog"><i class="fa fa-close"></i></div>
-        Share
+        Share Your Composition
         <div id="share-url"></div>
         <div id="share-url-copied" class="hidden"><i class="fa fa-check"></i> Copied</div>
       </div>
