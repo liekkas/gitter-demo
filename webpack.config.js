@@ -1,9 +1,9 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-const PROD = process.argv.indexOf('-p') !== -1;
+const PROD = (process.env.NODE_ENV === 'production');
 
-module.exports = {
+const CONFIG = {
   node: {
     fs: 'empty'
   },
@@ -37,11 +37,6 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  devServer: {
-    contentBase: './dist',
-    // hot: true,
-    historyApiFallback: true,
-  },
   plugins: [
     new CopyWebpackPlugin([
       { from: 'assets/img', to: 'img' },
@@ -53,3 +48,15 @@ module.exports = {
     ])
   ]
 };
+
+if (!PROD) {
+  CONFIG.devtool = 'source-map';
+
+  CONFIG.devServer ={
+    contentBase: './dist',
+    // hot: true,
+    historyApiFallback: true,
+  };
+}
+
+module.exports = CONFIG;
