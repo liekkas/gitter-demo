@@ -31,6 +31,7 @@
     "exports-loader": "^0.6.4",
     "gitter": "0.1.0",
     "imports-loader": "^0.7.1",
+    "raw-loader": "^0.5.1",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   }

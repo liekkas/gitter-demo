@@ -1,41 +1,26 @@
 import Gitter from 'gitter';
+import { isEmitter } from 'gitter/src/util/GitterUtil';
 
 const container = document.getElementById('container');
 
-const gitter = window.gitter = new Gitter({ 
+const gitter = new Gitter({ 
   canvas: {
     container
-  } 
+  },
+  keyboard: {
+    bindTo: document
+  }
 });
 
-const modeling = gitter.get('modeling');
-const gitterElementFactory = gitter.get('gitterElementFactory');
+gitter.create();
+
 const canvas = gitter.get('canvas');
+const elementRegistry = gitter.get('elementRegistry');
 const selection = gitter.get('selection');
-const gitterConfig = gitter.get('gitterConfig');
-const keyboard = gitter.get('keyboard');
 
-// inital diagram
-const rootShape = gitterElementFactory.createRoot();
-
-canvas.setRootElement(rootShape);
-
-const x = Math.floor(document.documentElement.clientWidth / 2) - 15;
-const y = Math.floor(document.documentElement.clientHeight / 2) - 15;
-
-const emitter = gitterElementFactory.createEmitter({
-  id: 'Emitter_1',
-  type: 'gitter:Emitter',
-  x: x - gitterConfig.propertiesPanelWidth,
-  y,
-  width: gitterConfig.shapeSize,
-  height: gitterConfig.shapeSize
-});
-
-canvas.addShape(emitter, rootShape);
-
-keyboard.bind(document);
-
+const emitter = elementRegistry.filter(e => isEmitter(e))[0];
 selection.select(emitter);
+
+canvas.zoom(1.5);
 
 window.gitter = gitter;

@@ -22,8 +22,12 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.svg$/,
+        use: 'raw-loader'
       }
-    ],
+    ]
   },
   resolve: {
     extensions: ['.js'],
@@ -42,6 +46,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: 'assets/img', to: 'img' },
       { from: 'src/index.html', to: 'index.html' },
+      { from: 'node_modules/gitter/assets/icons', to: 'icons' },
       { from: 'node_modules/gitter/assets/css', to: 'css' },
       { from: 'node_modules/gitter/assets/bpmn-font', to: 'bpmn-font' },
       { from: 'node_modules/gitter/assets/audio', to: 'audio' }
