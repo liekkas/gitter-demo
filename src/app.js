@@ -1,9 +1,11 @@
 import Gitter from 'gitter';
 import { isEmitter } from 'gitter/src/util/GitterUtil';
 
+import UrlShare from './UrlShare';
+
 const container = document.getElementById('container');
 
-const gitter = new Gitter({ 
+const gitter = new Gitter({
   canvas: {
     container
   },
@@ -11,6 +13,10 @@ const gitter = new Gitter({
     bindTo: document
   }
 });
+
+// intercept normal create
+const urlShare = new UrlShare(gitter);
+urlShare.intercept();
 
 gitter.create();
 
