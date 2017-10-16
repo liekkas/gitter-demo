@@ -41,6 +41,7 @@ const CONFIG = {
     new CopyWebpackPlugin([
       { from: 'assets/img', to: 'img' },
       { from: 'src/index.html', to: 'index.html' },
+      { from: 'node_modules/gitter/dist/gitter.js', to: 'gitter.js' },
       { from: 'node_modules/gitter/assets/icons', to: 'icons' },
       { from: 'node_modules/gitter/assets/css', to: 'css' },
       { from: 'node_modules/gitter/assets/bpmn-font', to: 'bpmn-font' },
